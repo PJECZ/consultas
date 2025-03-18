@@ -1,0 +1,50 @@
+/*--------
+ * Modal de descarga
+ *---------
+ */
+
+.boton-descarga         { background-color: #004360; color: #fff;}
+.boton-descarga:hover   { background-color:#004560  ; color: #fff;}
+.text-label             { color: #333 ; font-size: .8em; padding-top: 10px; padding-bottom: 0px;}
+
+.nav-link-distrito     {
+    color: #666;
+    background-color: #fff !important;
+    margin: 0px;
+    display: block;
+    padding: .0rem .5rem;
+    text-decoration: none;
+    width: 100%;
+}
+
+.nav-li-distrito     {
+    color: #666;
+    background-color: #fff !important;
+    margin: 0px;
+    display: block;
+    padding: .2rem .5rem;
+    text-decoration: none;
+    width: 100%;
+}
+
+.nav-link-distrito:hover {
+    background-color: #f9f9f9 !important;
+    color: #333 !important;
+    text-decoration: none;
+    padding: .0rem .5rem;
+}
+
+.nav-link-distrito.active{
+    background-color: #004360 !important;
+    color: #e1e1e1 !important;
+    display: block;
+    padding: .2rem .5rem;
+    text-decoration: none;
+    margin:0px;
+}
+
+#menuCard .nav-pills .nav-link.active {
+    background-color: #646566;
+    border-color: #646566;
+    color: #ffffff;
+}
