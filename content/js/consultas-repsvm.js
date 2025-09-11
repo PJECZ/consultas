@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (distritoClave != "") {
       encabezado = encabezado + " con clave del distrito " + distritoClave;
     }
-    redamTableTitle.innerHTML = encabezado;
+    repsvmTableTitle.innerHTML = encabezado;
     $("#repsvmTable").DataTable({
       lengthChange: false,
       ordering: false,
