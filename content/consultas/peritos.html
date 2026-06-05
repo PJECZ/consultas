@@ -1,139 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Peritos</title>
-    <meta name="slug" content="consultas-peritos" />
-    <meta name="summary" content="" />
-    <meta name="javascripts" content="consultas-api-url.js,consultas-distritos.js,consultas-peritos-tipos.js,consultas-peritos.js" />
-    <meta name="save_as" content="peritos/index.html" />
-  </head>
-  <body>
-    <!-- Cabecera -->
-    <p>La lista de Peritos en los términos de la Ley Orgánica del Poder Judicial del Estado.</p>
-    <!-- Instruciones -->
-    <h2 id="instrucciones">Instrucciones</h2>
-    <p class="mb-5 border-bottom">
-      Favor de seleccionar el <b>Distrito Judicial</b> (lista desplegable con los distritos)
-      y el tipo de perito (lista desplegable con los tipos de peritos).
-      Puede escribir parte del nombre, preferentemente un apellido. No use acentos ni caracteres especiales.
-      Luego presione el botón <b>Consultar</b> y espere a que se cargue el listado.
-      Para volver a buscar de clic en el botón <b>Regresar</b>.
-    </p>
-    <!-- Formulario -->
-    <div id="peritosFormCard" class="card">
-      <div class="card-body">
-        <div id="peritosFormSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
-        </div>
-        <form id="peritosForm" onsubmit="return false;">
-          <!-- Elija el distrito -->
-          <div class="row">
-            <div class="col-sm-12">
-              <div id="distritoSpinner" class="text-center">
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Cargando...</span>
+    <head>
+        <title>Peritos</title>
+        <meta name="slug" content="consultas-peritos" />
+        <meta name="summary" content="" />
+        <meta
+            name="javascripts"
+            content="consultas-api-url.js,consultas-distritos.js,consultas-peritos-tipos.js,consultas-peritos.js"
+        />
+        <meta name="save_as" content="peritos/index.html" />
+    </head>
+    <body>
+        <!-- Cabecera -->
+        <p>
+            La lista de Peritos en los términos de la Ley Orgánica del Poder
+            Judicial del Estado.
+        </p>
+        <!-- Instruciones -->
+        <h2 id="instrucciones">Instrucciones</h2>
+        <p class="mb-5 border-bottom">
+            Favor de seleccionar el <b>Distrito Judicial</b> (lista desplegable
+            con los distritos) y el tipo de perito (lista desplegable con los
+            tipos de peritos). Puede escribir parte del nombre, preferentemente
+            un apellido. No use acentos ni caracteres especiales. Luego presione
+            el botón <b>Consultar</b> y espere a que se cargue el listado. Para
+            volver a buscar de clic en el botón <b>Regresar</b>.
+        </p>
+        <!-- Formulario -->
+        <div id="peritosFormCard" class="card">
+            <div class="card-body">
+                <div id="peritosFormSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="distritoSelect">Elija el Distrito Judicial</label>
-                <select id="distritoSelect" name="distritoClave" class="form-control"></select>
-              </div>
+                <form id="peritosForm" onsubmit="return false;">
+                    <!-- Elija el distrito -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="distritoSpinner" class="text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Cargando...</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="distritoSelect"
+                                    >Elija el Distrito Judicial</label
+                                >
+                                <select
+                                    id="distritoSelect"
+                                    name="distritoClave"
+                                    class="form-control"
+                                ></select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Elija el tipo de perito -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="tipoDePeritoSpinner" class="text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Cargando...</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoDePeritoSelect"
+                                    >Elija el tipo de perito</label
+                                >
+                                <select
+                                    id="tipoDePeritoSelect"
+                                    name="tipoDePeritoId"
+                                    class="form-control"
+                                ></select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Escriba el nombre -->
+                    <div class="form-group">
+                        <label for="nombreInput">Nombre</label>
+                        <input
+                            id="nombreInput"
+                            type="text"
+                            class="form-control"
+                            placeholder="Por lo menos cuatro caracteres"
+                        />
+                    </div>
+                    <button id="consultarButton" class="btn btn-primary">
+                        Consultar
+                    </button>
+                </form>
             </div>
-          </div>
-          <!-- Elija el tipo de perito -->
-          <div class="row">
-            <div class="col-sm-12">
-              <div id="tipoDePeritoSpinner" class="text-center">
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Cargando...</span>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="tipoDePeritoSelect">Elija el tipo de perito</label>
-                <select id="tipoDePeritoSelect" name="tipoDePeritoId" class="form-control"></select>
-              </div>
-            </div>
-          </div>
-          <!-- Escriba el nombre -->
-          <div class="form-group">
-            <label for="nombreInput">Nombre</label>
-            <input id="nombreInput" type="text" class="form-control" placeholder="Por lo menos cuatro caracteres" />
-          </div>
-          <button id="consultarButton" class="btn btn-primary">Consultar</button>
-        </form>
-      </div>
-    </div>
-    <!-- Tabla -->
-    <div id="peritosTableCard" class="card">
-      <div class="card-header">
-        <h5 id="peritosTableTitle" class="card-title mb-2">Peritos</h5>
-        <button id="regresarConsultaButton" class="btn btn-warning btn-sm">
-          <i class="fa fa-reply" aria-hidden="true"></i> Regresar
-        </button>
-      </div>
-      <div class="card-body">
-        <div id="peritosTableSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
         </div>
-        <table id="peritosTable" class="table table-striped" style="width: 100%">
-          <thead>
-            <tr>
-              <th>Distrito</th>
-              <th>Tipo de perito</th>
-              <th>Nombre</th>
-              <th>Domicilio</th>
-              <th>Tel. fijo</th>
-              <th>Tel. celular</th>
-              <th>Correo electrónico</th>
-              <th>Notas</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-    <hr />
-    <a href="https://storage.googleapis.com/pjecz-consultas/avisos/aviso-peritos-permanencia-2026.pdf" target="_blank">
-        <img class="img-fluid" src="../theme/images/carrusel-peritos-convocatoria-2026.jpg" alt="Convocatoria 2026 Peritos">
-        <h3>
-            De clic aquí para descargar el Aviso para Peritos sobre la renovación de su permanencia en el listado.
-        </h3>
-    </a>
-    <hr />
-    <h2>Requisitos para el Registro de Peritos</h2>
-    <ol>
-      <li value="1">
-        Solicitud dirigida al <b>Pleno del Tribunal Superior de Justicia,</b>  en la que se exprese:
-        <ul>
-          <li>Nombre y Apellidos del solicitante.</li>
-          <li>Fecha de nacimientos.</li>
-          <li>Domicilio y número telefónico.</li>
-          <li>Manifestación de SI realiza funciones en cualquier organismo o dependencia del Estado o Municipio y SI percibe sueldo por cargos oficiales.</li>
-          <li>Distrito Judicial en el que desea actuar.</li>
-          <li>Correo electrónico.</li>
-        </ul>
-      </li>
-      <li>
-        Documentos que deberán acompañarse a la solicitud:
-        <ul>
-          <li>Identificación oficial (copia certificada).</li>
-          <li>Título y cédula profesional (copia certificada).</li>
-          <li>Carta de no antecedentes penales (original).</li>
-          <li>Documentos que acrediten práctica y experiencia en la especialidad que desea desempeñar (copia certificada de las constancias).</li>
-          <li>Dos fotografías (tamaño infantil).</li>
-        </ul>
-      </li>
-    </ol>
-    <h3>Auxiliares prácticos</h3>
-    <p>
-      Quienes deseen desempeñar el cargo de auxiliares prácticos,
-      además de los requisitos señalados en el punto número 1, señalarán en su solicitud,
-      bajo protesta de decir verdad, las circunstancias por las que se adquirieron conocimientos sobre la ciencia,
-      técnica o arte con la que se desea figurar en la lista,
-      y agregarán copias certificadas de las constancias que se tengan al respecto.
-    </p>
-  </body>
+        <!-- Tabla -->
+        <div id="peritosTableCard" class="card">
+            <div class="card-header">
+                <h5 id="peritosTableTitle" class="card-title mb-2">Peritos</h5>
+                <button
+                    id="regresarConsultaButton"
+                    class="btn btn-warning btn-sm"
+                >
+                    <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="peritosTableSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                </div>
+                <table
+                    id="peritosTable"
+                    class="table table-striped"
+                    style="width: 100%"
+                >
+                    <thead>
+                        <tr>
+                            <th>Distrito</th>
+                            <th>Tipo de perito</th>
+                            <th>Nombre</th>
+                            <th>Domicilio</th>
+                            <th>Tel. fijo</th>
+                            <th>Tel. celular</th>
+                            <th>Correo electrónico</th>
+                            <th>Notas</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <a
+            href="https://storage.googleapis.com/pjecz-informatica/avisos/aviso-peritos-permanencia-2026.pdf"
+            target="_blank"
+        >
+            <img
+                class="img-fluid"
+                src="../theme/images/carrusel-peritos-convocatoria-2026.jpg"
+                alt="Convocatoria 2026 Peritos"
+            />
+            <h3>
+                De clic aquí para descargar el Aviso para Peritos sobre la
+                renovación de su permanencia en el listado.
+            </h3>
+        </a>
+        <hr />
+        <h2>Requisitos para el Registro de Peritos</h2>
+        <ol>
+            <li value="1">
+                Solicitud dirigida al
+                <b>Pleno del Tribunal Superior de Justicia,</b> en la que se
+                exprese:
+                <ul>
+                    <li>Nombre y Apellidos del solicitante.</li>
+                    <li>Fecha de nacimientos.</li>
+                    <li>Domicilio y número telefónico.</li>
+                    <li>
+                        Manifestación de SI realiza funciones en cualquier
+                        organismo o dependencia del Estado o Municipio y SI
+                        percibe sueldo por cargos oficiales.
+                    </li>
+                    <li>Distrito Judicial en el que desea actuar.</li>
+                    <li>Correo electrónico.</li>
+                </ul>
+            </li>
+            <li>
+                Documentos que deberán acompañarse a la solicitud:
+                <ul>
+                    <li>Identificación oficial (copia certificada).</li>
+                    <li>Título y cédula profesional (copia certificada).</li>
+                    <li>Carta de no antecedentes penales (original).</li>
+                    <li>
+                        Documentos que acrediten práctica y experiencia en la
+                        especialidad que desea desempeñar (copia certificada de
+                        las constancias).
+                    </li>
+                    <li>Dos fotografías (tamaño infantil).</li>
+                </ul>
+            </li>
+        </ol>
+        <h3>Auxiliares prácticos</h3>
+        <p>
+            Quienes deseen desempeñar el cargo de auxiliares prácticos, además
+            de los requisitos señalados en el punto número 1, señalarán en su
+            solicitud, bajo protesta de decir verdad, las circunstancias por las
+            que se adquirieron conocimientos sobre la ciencia, técnica o arte
+            con la que se desea figurar en la lista, y agregarán copias
+            certificadas de las constancias que se tengan al respecto.
+        </p>
+    </body>
 </html>
