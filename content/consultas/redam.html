@@ -1,99 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Registro Estatal de Deudores Alimentarios Morosos (REDAM)</title>
-    <meta name="slug" content="consultas-redam" />
-    <meta name="summary" content="" />
-    <meta name="javascripts" content="consultas-api-url.js,consultas-distritos.js,consultas-redam.js" />
-    <meta name="save_as" content="redam/index.html" />
-  </head>
-  <body>
-    <!-- Cabecera -->
-    <p><img class="img-fluid" src="../theme/images/encabezado.jpg" /></p>
-    <h3>¿Qué es el Registro Estatal de Deudores Alimentarios Morosos?</h3>
-    <p>
-      De acuerdo al <b>Artículo 308</b> de la <b>Ley de Familia</b> el <b>Poder Judicial</b> tendrá a su cargo la creación y manejo del
-      <b>Registro Estatal de Deudores Alimentarios Morosos,</b> en el que se inscribirá a las personas que hayan dejado de cumplir
-      sus obligaciones alimentarias de manera consecutiva o intermitentemente, ya sea en tres ocasiones en un periodo de tres meses, o,
-      para el caso de las pensiones alimenticias que se deban cumplir de manera mensual, en tres ocasiones en un periodo de seis meses,
-      decretadas por la autoridad judicial correspondiente.
-    </p>
-    <p>
-      Es necesario que la acreedora o acreedor reporte la incidencia de adeudo ante el juzgado familiar correspondiente,
-      para que el órgano jurisdiccional registre a la persona deudora.
-    </p>
-    <!-- Instruciones -->
-    <h2 id="instrucciones">Instrucciones</h2>
-    <p class="mb-5 border-bottom">
-      Favor de seleccionar el <b>Distrito Judicial</b> (lista desplegable con los distritos).
-      Puede dejarlo en "Todos" para mostrar todos los registros del distrito.
-      Luego escribir parte del nombre, preferentemente un apellido.
-      Presione el botón <b>Consultar</b> y espere a que se cargue el listado.
-      Para volver a consultar de clic en el botón <b>Regresar</b>.
-    </p>
-    <!-- Formulario -->
-    <div id="redamFormCard" class="card">
-      <div class="card-body">
-        <div id="redamFormSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
-        </div>
-        <form id="redamForm" onsubmit="return false;">
-          <!-- Distrito -->
-          <div class="row">
-            <div class="col-sm-12">
-              <div id="distritoSpinner" class="text-center">
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Cargando...</span>
+    <head>
+        <title>Registro Estatal de Deudores Alimentarios Morosos (REDAM)</title>
+        <meta name="slug" content="consultas-redam" />
+        <meta name="summary" content="" />
+        <meta
+            name="javascripts"
+            content="consultas-api-url.js,consultas-distritos.js,consultas-redam.js"
+        />
+        <meta name="save_as" content="redam/index.html" />
+    </head>
+    <body>
+        <!-- Cabecera -->
+        <p><img class="img-fluid" src="../theme/images/encabezado.jpg" /></p>
+        <h3>¿Qué es el Registro Estatal de Deudores Alimentarios Morosos?</h3>
+        <p>
+            De acuerdo al <b>Artículo 308</b> de la <b>Ley de Familia</b> el
+            <b>Poder Judicial</b> tendrá a su cargo la creación y manejo del
+            <b>Registro Estatal de Deudores Alimentarios Morosos,</b> en el que
+            se inscribirá a las personas que hayan dejado de cumplir sus
+            obligaciones alimentarias de manera consecutiva o intermitentemente,
+            ya sea en tres ocasiones en un periodo de tres meses, o, para el
+            caso de las pensiones alimenticias que se deban cumplir de manera
+            mensual, en tres ocasiones en un periodo de seis meses, decretadas
+            por la autoridad judicial correspondiente.
+        </p>
+        <p>
+            Es necesario que la acreedora o acreedor reporte la incidencia de
+            adeudo ante el juzgado familiar correspondiente, para que el órgano
+            jurisdiccional registre a la persona deudora.
+        </p>
+        <!-- Instruciones -->
+        <h2 id="instrucciones">Instrucciones</h2>
+        <p class="mb-5 border-bottom">
+            Favor de seleccionar el <b>Distrito Judicial</b> (lista desplegable
+            con los distritos). Puede dejarlo en "Todos" para mostrar todos los
+            registros del distrito. Luego escribir parte del nombre,
+            preferentemente un apellido. Presione el botón <b>Consultar</b> y
+            espere a que se cargue el listado. Para volver a consultar de clic
+            en el botón <b>Regresar</b>.
+        </p>
+        <!-- Formulario -->
+        <div id="redamFormCard" class="card">
+            <div class="card-body">
+                <div id="redamFormSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="distritoSelect">Elija el Distrito</label>
-                <select id="distritoSelect" name="distritoClave" class="form-control"></select>
-              </div>
+                <form id="redamForm" onsubmit="return false;">
+                    <!-- Distrito -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="distritoSpinner" class="text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Cargando...</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="distritoSelect"
+                                    >Elija el Distrito</label
+                                >
+                                <select
+                                    id="distritoSelect"
+                                    name="distritoClave"
+                                    class="form-control"
+                                ></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input
+                            id="nombreInput"
+                            type="text"
+                            class="form-control"
+                            placeholder="Por lo menos cuatro caracteres"
+                        />
+                    </div>
+                    <button id="consultarButton" class="btn btn-primary">
+                        Consultar
+                    </button>
+                </form>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input id="nombreInput" type="text" class="form-control" placeholder="Por lo menos cuatro caracteres" />
-          </div>
-          <button id="consultarButton" class="btn btn-primary">Consultar</button>
-        </form>
-      </div>
-    </div>
-    <!-- Tabla -->
-    <div id="redamTableCard" class="card">
-      <div class="card-header">
-        <h5 id="redamTableTitle" class="card-title mb-2">REDAM</h5>
-        <button id="regresarConsultaButton" class="btn btn-warning btn-sm">
-          <i class="fa fa-reply" aria-hidden="true"></i> Regresar
-        </button>
-      </div>
-      <div class="card-body">
-        <div id="redamTableSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
         </div>
-        <table id="redamTable" class="table table-striped" style="width: 100%">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Nombre</th>
-              <th>Distrito</th>
-              <th>Juzgado</th>
-              <th>Expediente</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-    <h3>Descargar la base de datos del REDAM</h3>
-    <p>
-      Para descargar los datos del <b>Registro Estatal de Deudores Alimentarios Morosos</b>
-      como un archivo CSV, haga clic en el siguiente enlace:
-      <a href="https://storage.googleapis.com/pjecz-consultas/REDAM/redam.csv">Descargar redam.csv</a>
-    </p>
-  </body>
+        <!-- Tabla -->
+        <div id="redamTableCard" class="card">
+            <div class="card-header">
+                <h5 id="redamTableTitle" class="card-title mb-2">REDAM</h5>
+                <button
+                    id="regresarConsultaButton"
+                    class="btn btn-warning btn-sm"
+                >
+                    <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="redamTableSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                </div>
+                <table
+                    id="redamTable"
+                    class="table table-striped"
+                    style="width: 100%"
+                >
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nombre</th>
+                            <th>Distrito</th>
+                            <th>Juzgado</th>
+                            <th>Expediente</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <h3>Descargar la base de datos del REDAM</h3>
+        <p>
+            Para descargar los datos del
+            <b>Registro Estatal de Deudores Alimentarios Morosos</b>
+            como un archivo CSV, haga clic en el siguiente enlace:
+            <a
+                href="https://storage.googleapis.com/pjecz-informatica/REDAM/redam.csv"
+                >Descargar redam.csv</a
+            >
+        </p>
+    </body>
 </html>

@@ -1,97 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Abogados Registrados</title>
-    <meta name="slug" content="consultas-abogados-registrados" />
-    <meta name="summary" content="" />
-    <meta name="javascripts" content="consultas-api-url.js,consultas-abogados-registrados.js" />
-    <meta name="save_as" content="abogados-registrados/index.html" />
-  </head>
-  <body>
-    <!-- Cabecera -->
-    <p class="mb-5 border-bottom">
-      Consultar las y los abogados registrados en el Poder Judicial del Estado de Coahuila de Zaragoza.
-    </p>
-    <!-- Registro -->
-    <h2 id="registro">Registro de Título Profesional</h2>
-    <p>Para ejercer en el Estado de Coahuila la profesión de abogado, se requiere poseer título legalmente expedido y debidamente registrado en el Tribunal Superior de Justicia.</p>
-    <ul>
-      <li>Se deberá presentar ante la Secretaría del Pleno para llevar a cabo el registro.</li>
-      <li>Este trámite puede realizar el/la persona interesada o un tercero, presentando por escrito dicha solicitud.</li>
-      <li>En caso de que la persona interesada no sea quien vaya a recoger el título, deberá autorizar en su escrito de solicitud a la persona designada para realizar dicha gestión o en su caso la persona que se presente a pedir la documentación podrá hacerlo con una carta poder notariada.</li>
-    </ul>
-    <p>Requisitos para la inscripción:</p>
-    <ul>
-      <li>Original del Título Profesional legalizado y copia.</li>
-      <li>
-        Escrito libre dirigido al Presidente del Tribunal, en donde se solicita la inscripción del mismo.
-        <a href="https://storage.googleapis.com/pjecz-consultas/abogados-registrados/escrito-titulo-2025.pdf" target="_blank">(Descargar aquí).</a>
-      </li>
-      <li>3 Fotografías tamaño infantil a color o blanco y negro.</li>
-      <li>Copia de identificación oficial.</li>
-      <li>
-        Formato de autorización del registro del título.
-        <a href="https://storage.googleapis.com/pjecz-consultas/abogados-registrados/solicitud-registro-titulos-2025.pdf" target="_blank">(Descargar formato aquí).</a>
-      </li>
-    </ul>
-    <!-- Instrucciones para consultar -->
-    <h2 id="instrucciones">Instrucciones para consultar</h2>
-    <p class="mb-5 border-bottom">
-      Favor de escribir el nombre del abogado o abogada, o parte de él, en el campo <b>Nombre</b>.
-      Puede dejar el campo vacío para mostrar todos los abogados registrados.
-      De clic en el botón <b>Consultar</b> y espere a que se cargue el listado.
-      Para volver a consultar de clic en el botón <b>Regresar</b>.
-    </p>
-    <!-- Formulario -->
-    <div id="abogadosRegistradosFormCard" class="card">
-      <div class="card-body">
-        <div id="abogadosRegistradosFormSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
+    <head>
+        <title>Abogados Registrados</title>
+        <meta name="slug" content="consultas-abogados-registrados" />
+        <meta name="summary" content="" />
+        <meta
+            name="javascripts"
+            content="consultas-api-url.js,consultas-abogados-registrados.js"
+        />
+        <meta name="save_as" content="abogados-registrados/index.html" />
+    </head>
+    <body>
+        <!-- Cabecera -->
+        <p class="mb-5 border-bottom">
+            Consultar las y los abogados registrados en el Poder Judicial del
+            Estado de Coahuila de Zaragoza.
+        </p>
+        <!-- Registro -->
+        <h2 id="registro">Registro de Título Profesional</h2>
+        <p>
+            Para ejercer en el Estado de Coahuila la profesión de abogado, se
+            requiere poseer título legalmente expedido y debidamente registrado
+            en el Tribunal Superior de Justicia.
+        </p>
+        <ul>
+            <li>
+                Se deberá presentar ante la Secretaría del Pleno para llevar a
+                cabo el registro.
+            </li>
+            <li>
+                Este trámite puede realizar el/la persona interesada o un
+                tercero, presentando por escrito dicha solicitud.
+            </li>
+            <li>
+                En caso de que la persona interesada no sea quien vaya a recoger
+                el título, deberá autorizar en su escrito de solicitud a la
+                persona designada para realizar dicha gestión o en su caso la
+                persona que se presente a pedir la documentación podrá hacerlo
+                con una carta poder notariada.
+            </li>
+        </ul>
+        <p>Requisitos para la inscripción:</p>
+        <ul>
+            <li>Original del Título Profesional legalizado y copia.</li>
+            <li>
+                Escrito libre dirigido al Presidente del Tribunal, en donde se
+                solicita la inscripción del mismo.
+                <a
+                    href="https://storage.googleapis.com/pjecz-informatica/abogados-registrados/escrito-titulo-2025.pdf"
+                    target="_blank"
+                    >(Descargar aquí).</a
+                >
+            </li>
+            <li>3 Fotografías tamaño infantil a color o blanco y negro.</li>
+            <li>Copia de identificación oficial.</li>
+            <li>
+                Formato de autorización del registro del título.
+                <a
+                    href="https://storage.googleapis.com/pjecz-informatica/abogados-registrados/solicitud-registro-titulos-2025.pdf"
+                    target="_blank"
+                    >(Descargar formato aquí).</a
+                >
+            </li>
+        </ul>
+        <!-- Instrucciones para consultar -->
+        <h2 id="instrucciones">Instrucciones para consultar</h2>
+        <p class="mb-5 border-bottom">
+            Favor de escribir el nombre del abogado o abogada, o parte de él, en
+            el campo <b>Nombre</b>. Puede dejar el campo vacío para mostrar
+            todos los abogados registrados. De clic en el botón
+            <b>Consultar</b> y espere a que se cargue el listado. Para volver a
+            consultar de clic en el botón <b>Regresar</b>.
+        </p>
+        <!-- Formulario -->
+        <div id="abogadosRegistradosFormCard" class="card">
+            <div class="card-body">
+                <div id="abogadosRegistradosFormSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                </div>
+                <form id="abogadosRegistradosForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="nombreInput">Nombre</label>
+                        <input
+                            id="nombreInput"
+                            type="text"
+                            class="form-control"
+                            placeholder="Por lo menos cuatro caracteres"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="anioDesdeInput"
+                            >Año de registro, desde</label
+                        >
+                        <input
+                            id="anioDesdeInput"
+                            class="form-control"
+                            placeholder="Desde 1925"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="anioHastaInput"
+                            >Año de registro, hasta</label
+                        >
+                        <input
+                            id="anioHastaInput"
+                            class="form-control"
+                            placeholder="Año del presente"
+                        />
+                    </div>
+                    <button id="consultarButton" class="btn btn-primary">
+                        Consultar
+                    </button>
+                </form>
+            </div>
         </div>
-        <form id="abogadosRegistradosForm" onsubmit="return false;">
-          <div class="form-group">
-            <label for="nombreInput">Nombre</label>
-            <input id="nombreInput" type="text" class="form-control" placeholder="Por lo menos cuatro caracteres" />
-          </div>
-          <div class="form-group">
-            <label for="anioDesdeInput">Año de registro, desde</label>
-            <input id="anioDesdeInput" class="form-control" placeholder="Desde 1925" />
-          </div>
-          <div class="form-group">
-            <label for="anioHastaInput">Año de registro, hasta</label>
-            <input id="anioHastaInput" class="form-control" placeholder="Año del presente" />
-          </div>
-          <button id="consultarButton" class="btn btn-primary">Consultar</button>
-        </form>
-      </div>
-    </div>
-    <!-- Tabla -->
-    <div id="abogadosRegistradosTableCard" class="card">
-      <div class="card-header">
-        <h5 id="abogadosRegistradosTableTitle" class="card-title mb-2">Abogados registrados</h5>
-        <button id="regresarConsultaButton" class="btn btn-warning btn-sm">
-          <i class="fa fa-reply" aria-hidden="true"></i> Regresar
-        </button>
-      </div>
-      <div class="card-body">
-        <div id="abogadosRegistradosTableSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
+        <!-- Tabla -->
+        <div id="abogadosRegistradosTableCard" class="card">
+            <div class="card-header">
+                <h5 id="abogadosRegistradosTableTitle" class="card-title mb-2">
+                    Abogados registrados
+                </h5>
+                <button
+                    id="regresarConsultaButton"
+                    class="btn btn-warning btn-sm"
+                >
+                    <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="abogadosRegistradosTableSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                </div>
+                <table
+                    id="abogadosRegistradosTable"
+                    class="table table-striped"
+                    style="width: 100%"
+                >
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Libro</th>
+                            <th>Numero</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-        <table id="abogadosRegistradosTable" class="table table-striped" style="width: 100%">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Libro</th>
-              <th>Numero</th>
-              <th>Nombre</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>

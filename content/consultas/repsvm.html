@@ -1,123 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Registro Estatal de Personas Sancionadas por Violencia contra las Mujeres (REPSVM)</title>
-    <meta name="slug" content="consultas-repsvm" />
-    <meta name="summary" content="" />
-    <meta name="javascripts" content="consultas-api-url.js,consultas-distritos.js,consultas-repsvm.js" />
-    <meta name="save_as" content="repsvm/index.html" />
-  </head>
-  <body>
-    <!-- Cabecera -->
-    <h2>¿Qué es el Registro Estatal de Personas Sancionadas por Violencia contra las Mujeres?</h2>
-    <p>
-      Es un sistema de información de carácter administrativo y público, que contiene la inscripción de
-      personas condenadas y sancionadas en un procedimiento penal por una sentencia ejecutoriada por delitos que
-      implican violencia contra la mujer como son aquellos que vulneren el desarrollo de la personalidad;
-      la integridad corporal; las libertades y seguridades reproductivas; la libertad y seguridades sexuales y
-      el desarrollo de la personalidad; la vida; y la familia libre de violencia y la subsistencia familiar.
-    </p>
-    <h3>Antecedentes</h3>
-    <p>
-      El artículo 3 de la Convención contra la Eliminación de todas las formas de discriminación contra la Mujer (CEDAW)
-      establece que los Estados parte deben, en todas las esferas, adoptar las medidas apropiadas para garantizar a las mujeres
-      el ejercicio y el goce de sus derechos humanos y las libertades fundamentales en igualdad de condiciones con el hombre.
-    </p>
-    <p>
-      En materia de violencia contra las mujeres, el Comité CEDAW ha recomendado a los Estados partes establecer
-      un sistema para recabar, analizar y publicar periódicamente datos estadísticos sobre el número de denuncias de
-      todas las formas de violencia por razón de género contra la mujer. El sistema debe incluir información sobre
-      las condenas impuestas a los autores y las reparaciones.
-    </p>
-    <h3>Objetivo</h3>
-    <p>
-      Tiene como objetivo ser un mecanismo efectivo de prevención y protección para atender el factor de riesgo de reincidencia y
-      repetición de conductas de violencia contra las mujeres, a favor de las víctimas o potenciales víctimas.
-      Este registro busca contribuir a garantizar el derecho de acceso de las mujeres a una vida libre de violencia y
-      el derecho de acceso a la información.
-    </p>
-    <p>
-      Consulte el
-      <a href="/acuerdos-del-consejo/2022/2022-01-24-acuerdo-registro-repvm/">
-        Acuerdo C-009/2022 emitido por el Pleno del Consejo de la Judicatura del Estado de Coahuila de Zaragoza
-      </a>
-    </p>
-    <!-- Instruciones -->
-    <h2 id="instrucciones">Instrucciones</h2>
-    <p class="mb-5 border-bottom">
-      Favor de seleccionar el <b>Distrito Judicial</b> (lista desplegable con los distritos).
-      Puede dejarlo en "Todos" para mostrar todos los registros del distrito.
-      Luego escribir parte del nombre, preferentemente un apellido.
-      Presione el botón <b>Consultar</b> y espere a que se cargue el listado.
-      Para volver a consultar de clic en el botón <b>Regresar</b>.
-    </p>
-    <!-- Formulario -->
-    <div id="repsvmFormCard" class="card">
-      <div class="card-body">
-        <div id="repsvmFormSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
-        </div>
-        <form id="repsvmForm" onsubmit="return false;">
-          <!-- Distrito -->
-          <div class="row">
-            <div class="col-sm-12">
-              <div id="distritoSpinner" class="text-center">
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Cargando...</span>
+    <head>
+        <title>
+            Registro Estatal de Personas Sancionadas por Violencia contra las
+            Mujeres (REPSVM)
+        </title>
+        <meta name="slug" content="consultas-repsvm" />
+        <meta name="summary" content="" />
+        <meta
+            name="javascripts"
+            content="consultas-api-url.js,consultas-distritos.js,consultas-repsvm.js"
+        />
+        <meta name="save_as" content="repsvm/index.html" />
+    </head>
+    <body>
+        <!-- Cabecera -->
+        <h2>
+            ¿Qué es el Registro Estatal de Personas Sancionadas por Violencia
+            contra las Mujeres?
+        </h2>
+        <p>
+            Es un sistema de información de carácter administrativo y público,
+            que contiene la inscripción de personas condenadas y sancionadas en
+            un procedimiento penal por una sentencia ejecutoriada por delitos
+            que implican violencia contra la mujer como son aquellos que
+            vulneren el desarrollo de la personalidad; la integridad corporal;
+            las libertades y seguridades reproductivas; la libertad y
+            seguridades sexuales y el desarrollo de la personalidad; la vida; y
+            la familia libre de violencia y la subsistencia familiar.
+        </p>
+        <h3>Antecedentes</h3>
+        <p>
+            El artículo 3 de la Convención contra la Eliminación de todas las
+            formas de discriminación contra la Mujer (CEDAW) establece que los
+            Estados parte deben, en todas las esferas, adoptar las medidas
+            apropiadas para garantizar a las mujeres el ejercicio y el goce de
+            sus derechos humanos y las libertades fundamentales en igualdad de
+            condiciones con el hombre.
+        </p>
+        <p>
+            En materia de violencia contra las mujeres, el Comité CEDAW ha
+            recomendado a los Estados partes establecer un sistema para recabar,
+            analizar y publicar periódicamente datos estadísticos sobre el
+            número de denuncias de todas las formas de violencia por razón de
+            género contra la mujer. El sistema debe incluir información sobre
+            las condenas impuestas a los autores y las reparaciones.
+        </p>
+        <h3>Objetivo</h3>
+        <p>
+            Tiene como objetivo ser un mecanismo efectivo de prevención y
+            protección para atender el factor de riesgo de reincidencia y
+            repetición de conductas de violencia contra las mujeres, a favor de
+            las víctimas o potenciales víctimas. Este registro busca contribuir
+            a garantizar el derecho de acceso de las mujeres a una vida libre de
+            violencia y el derecho de acceso a la información.
+        </p>
+        <p>
+            Consulte el
+            <a
+                href="/acuerdos-del-consejo/2022/2022-01-24-acuerdo-registro-repvm/"
+            >
+                Acuerdo C-009/2022 emitido por el Pleno del Consejo de la
+                Judicatura del Estado de Coahuila de Zaragoza
+            </a>
+        </p>
+        <!-- Instruciones -->
+        <h2 id="instrucciones">Instrucciones</h2>
+        <p class="mb-5 border-bottom">
+            Favor de seleccionar el <b>Distrito Judicial</b> (lista desplegable
+            con los distritos). Puede dejarlo en "Todos" para mostrar todos los
+            registros del distrito. Luego escribir parte del nombre,
+            preferentemente un apellido. Presione el botón <b>Consultar</b> y
+            espere a que se cargue el listado. Para volver a consultar de clic
+            en el botón <b>Regresar</b>.
+        </p>
+        <!-- Formulario -->
+        <div id="repsvmFormCard" class="card">
+            <div class="card-body">
+                <div id="repsvmFormSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="distritoSelect">Elija el Distrito</label>
-                <select id="distritoSelect" name="distritoClave" class="form-control"></select>
-              </div>
+                <form id="repsvmForm" onsubmit="return false;">
+                    <!-- Distrito -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="distritoSpinner" class="text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Cargando...</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="distritoSelect"
+                                    >Elija el Distrito</label
+                                >
+                                <select
+                                    id="distritoSelect"
+                                    name="distritoClave"
+                                    class="form-control"
+                                ></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input
+                            id="nombreInput"
+                            type="text"
+                            class="form-control"
+                            placeholder="Por lo menos cuatro caracteres"
+                        />
+                    </div>
+                    <button id="consultarButton" class="btn btn-primary">
+                        Consultar
+                    </button>
+                </form>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input id="nombreInput" type="text" class="form-control" placeholder="Por lo menos cuatro caracteres" />
-          </div>
-          <button id="consultarButton" class="btn btn-primary">Consultar</button>
-        </form>
-      </div>
-    </div>
-    <!-- Tabla -->
-    <div id="repsvmTableCard" class="card">
-      <div class="card-header">
-        <h5 id="repsvmTableTitle" class="card-title mb-2">REPSVM</h5>
-        <button id="regresarConsultaButton" class="btn btn-warning btn-sm">
-          <i class="fa fa-reply" aria-hidden="true"></i> Regresar
-        </button>
-      </div>
-      <div class="card-body">
-        <div id="repsvmTableSpinner" class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Cargando...</span>
-          </div>
         </div>
-        <table id="repsvmTable" class="table table-striped" style="width: 100%">
-          <thead>
-            <tr>
-              <th>Distrito</th>
-              <th>Nombre</th>
-              <th>Tipo de Juzgado</th>
-              <th>Delito Genérico</th>
-              <th>Delito Específico</th>
-              <th>Tipo de Sentencia</th>
-              <th>No. Causa</th>
-              <th>Pena impuesta</th>
-              <th>Observaciones</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-    <h3>Descargar la base de datos del REPSVM</h3>
-    <p>
-      Para descargar los datos del <b>Registro Estatal de Personas Sancionadas por Violencia contra las Mujeres</b>
-      como un archivo CSV, haga clic en el siguiente enlace:
-      <a href="https://storage.googleapis.com/pjecz-consultas/REPSVM/repsvm.csv">Descargar repsvm.csv</a>
-    </p>
-  </body>
+        <!-- Tabla -->
+        <div id="repsvmTableCard" class="card">
+            <div class="card-header">
+                <h5 id="repsvmTableTitle" class="card-title mb-2">REPSVM</h5>
+                <button
+                    id="regresarConsultaButton"
+                    class="btn btn-warning btn-sm"
+                >
+                    <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="repsvmTableSpinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                </div>
+                <table
+                    id="repsvmTable"
+                    class="table table-striped"
+                    style="width: 100%"
+                >
+                    <thead>
+                        <tr>
+                            <th>Distrito</th>
+                            <th>Nombre</th>
+                            <th>Tipo de Juzgado</th>
+                            <th>Delito Genérico</th>
+                            <th>Delito Específico</th>
+                            <th>Tipo de Sentencia</th>
+                            <th>No. Causa</th>
+                            <th>Pena impuesta</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <h3>Descargar la base de datos del REPSVM</h3>
+        <p>
+            Para descargar los datos del
+            <b
+                >Registro Estatal de Personas Sancionadas por Violencia contra
+                las Mujeres</b
+            >
+            como un archivo CSV, haga clic en el siguiente enlace:
+            <a
+                href="https://storage.googleapis.com/pjecz-informatica/REPSVM/repsvm.csv"
+                >Descargar repsvm.csv</a
+            >
+        </p>
+    </body>
 </html>
