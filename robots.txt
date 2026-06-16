@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /consultas/css
+Disallow: /consultas/js
+Disallow: /consultas/theme
